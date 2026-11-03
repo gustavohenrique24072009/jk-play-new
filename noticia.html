@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícia | JK Play News</title>
+    <meta name="description" content="Leia as notícias da Escola Estadual John Kennedy.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="noticia.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-jk">JK</span>
+                <span class="logo-text">PLAY <strong>NEWS</strong></span>
+            </a>
+
+            <nav class="navigation">
+                <a href="index.html">Início</a>
+                <a href="index.html#escola">Escola</a>
+                <a href="index.html#esportes">Esportes</a>
+                <a href="index.html#eventos">Eventos</a>
+            </nav>
+
+            <a href="admin.html" class="admin-link">Área administrativa</a>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <a href="index.html" class="back-link">← Voltar para o portal</a>
+
+        <article id="article-content">
+            <div class="article-header">
+                <span id="article-category" class="category">NOTÍCIA</span>
+                <h1 id="article-title">Carregando notícia...</h1>
+                <p id="article-summary" class="article-summary"></p>
+
+                <div class="article-meta">
+                    <span id="article-author"></span>
+                    <span id="article-date"></span>
+                </div>
+            </div>
+
+            <img id="article-cover" class="article-cover" src="" alt="">
+
+            <div id="article-body" class="article-body"></div>
+
+            <div class="article-share">
+                <span>Compartilhe esta notícia:</span>
+                <button id="share-button" class="primary-button">Compartilhar</button>
+            </div>
+        </article>
+
+        <section class="related-section">
+            <h2>Leia também</h2>
+            <div id="related-news" class="news-grid"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>JK PLAY NEWS</strong>
+                <p>Clube de Protagonismo de Comunicação da Escola Estadual John Kennedy.</p>
+            </div>
+            <span>© 2026 JK Play</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="noticia.js"></script>
+</body>
+</html>

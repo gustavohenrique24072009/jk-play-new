@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo | JK Play News</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="header-content">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">JK</span>
+        <span>JK Play <strong>News</strong></span>
+      </a>
+
+      <a class="back-link" href="index.html">← Ver portal</a>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">ÁREA RESTRITA</p>
+        <h1>Painel administrativo</h1>
+        <p>Gerencie notícias e crie Stories para as redes sociais.</p>
+      </div>
+    </section>
+
+    <nav class="admin-tabs" aria-label="Navegação do painel">
+      <button class="tab-button active" data-tab="editor" type="button">
+        Nova notícia
+      </button>
+      <button class="tab-button" data-tab="list" type="button">
+        Notícias
+      </button>
+      <button class="tab-button" data-tab="stories" type="button">
+        Gerar Stories
+      </button>
+    </nav>
+
+    <div id="admin-message" class="admin-message" role="status"></div>
+
+    <!-- EDITOR -->
+    <section id="editor" class="admin-panel active">
+      <div class="panel-heading">
+        <div>
+          <h2 id="editor-heading">Cadastrar notícia</h2>
+          <p>Preencha os dados da matéria.</p>
+        </div>
+      </div>
+
+      <form id="news-form">
+        <input type="hidden" id="news-id">
+
+        <div class="form-group">
+          <label for="news-title">Título da notícia *</label>
+          <input
+            id="news-title"
+            type="text"
+            maxlength="180"
+            placeholder="Digite o título da matéria"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="news-summary">Resumo *</label>
+          <textarea
+            id="news-summary"
+            rows="3"
+            maxlength="400"
+            placeholder="Escreva um resumo para a notícia"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="news-category">Categoria *</label>
+            <select id="news-category" required>
+              <option value="">Selecione uma categoria</option>
+              <option value="Escola">Escola</option>
+              <option value="Eventos">Eventos</option>
+              <option value="Esportes">Esportes</option>
+              <option value="Projetos">Projetos</option>
+              <option value="Cultura">Cultura</option>
+              <option value="Educação">Educação</option>
+              <option value="Comunicados">Comunicados</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="news-author">Autor</label>
+            <input
+              id="news-author"
+              type="text"
+              maxlength="100"
+              placeholder="Ex.: JK Play News"
+            >
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="news-date">Data *</label>
+            <input id="news-date" type="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="news-image">Imagem de capa</label>
+            <input id="news-image" type="file" accept="image/*">
+
+            <div class="image-preview-container">
+              <img id="image-preview" alt="Prévia da imagem selecionada">
+              <p id="image-preview-message">Nenhuma imagem selecionada</p>
+            </div>
+
+            <button id="remove-image" class="button button-small button-secondary" type="button">
+              Remover imagem
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="news-content">Matéria completa *</label>
+          <textarea
+            id="news-content"
+            rows="14"
+            placeholder="Escreva o texto completo da notícia..."
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button class="button button-primary" type="submit">
+            Publicar notícia
+          </button>
+          <button id="save-draft" class="button button-secondary" type="button">
+            Salvar rascunho
+          </button>
+          <button id="cancel-edit" class="button button-secondary hidden" type="button">
+            Cancelar edição
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- LISTA DE NOTÍCIAS -->
+    <section id="list" class="admin-panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Notícias cadastradas</h2>
+          <p>Edite, exclua ou gere Stories a partir de uma notícia.</p>
+        </div>
+        <button id="new-news-button" class="button button-primary" type="button">
+          + Nova notícia
+        </button>
+      </div>
+
+      <div id="news-list" class="news-list"></div>
+    </section>
+
+   
+  <!-- STORIES -->
+<section id="stories" class="admin-panel">
+  <div class="panel-heading">
+    <div>
+      <h2>Gerador de Stories</h2>
+      <p>Crie imagens verticais para compartilhar no Instagram.</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="story-news-select">Escolha uma notícia</label>
+    <select id="story-news-select">
+      <option value="">Selecione uma notícia</option>
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button
+      id="generate-stories"
+      class="button button-primary"
+      type="button"
+    >
+      Gerar Stories
+    </button>
+  </div>
+
+  <div id="story-output" class="story-output hidden">
+    <div class="story-card">
+      <h3>Story 1 — Capa da notícia</h3>
+      <canvas id="story-canvas" width="1080" height="1920"></canvas>
+
+      <button
+        id="download-story"
+        class="button button-primary"
+        type="button"
+      >
+        Baixar Story 1
+      </button>
+    </div>
+
+    <div class="story-card">
+      <h3>Story 2 — Resumo e chamada</h3>
+      <canvas id="story-canvas-2" width="1080" height="1920"></canvas>
+
+      <button
+        id="download-story-2"
+        class="button button-primary"
+        type="button"
+      >
+        Baixar Story 2
+      </button>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="admin-footer">
+    <p>JK Play News — Painel administrativo</p>
+  </footer>
+</body>
+</html>
